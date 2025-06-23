@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Hotel Admin Dashboard</title>
+</head>
+<body>
+    <!-- Login Form -->
+    <div id="loginContainer" class="login-container">
+        <form class="login-form" id="loginForm">
+            <div class="login-header">
+                <h1>Hotel Admin</h1>
+                <p>Please sign in to continue</p>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminContainer" class="admin-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Hotel Admin</h2>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" onclick="showSection('dashboard', this)">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('rooms', this)">Room Management</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('bookings', this)">Booking Management</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('checkin', this)">Check-In/Out</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('staff', this)">Staff Assignments</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('reports', this)">Reports</a>
+                </li>
+                <li class="nav-item logout-link" style="margin-top: auto;">
+                    <a href="#" class="nav-link" onclick="logout()">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="section">
+                <div class="page-header">
+                    <h1>Dashboard Overview</h1>
+                    <p>Welcome back! Here's what's happening at your hotel today.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">156</div>
+                        <div class="stat-label">Total Bookings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">89%</div>
+                        <div class="stat-label">Occupancy Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$12,450</div>
+                        <div class="stat-label">Today's Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">23</div>
+                        <div class="stat-label">Check-ins Today</div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Recent Bookings</h2>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Guest Name</th>
+                                <th>Room</th>
+                                <th>Check-in</th>
+                                <th>Check-out</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Room Management Section -->
+            <div id="rooms" class="section hidden">
+                <div class="page-header">
+                    <h1>Room Management</h1>
+                    <p>Hotel rooms, rates, and amenities.</p>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Rooms</h2>
+                        <button class="btn btn-primary" onclick="openModal('addRoomModal')">
+                             Add New Room
+                        </button>
+                    </div>
+                    <table class="data-table" id="roomsTable">
+                        <thead>
+                            <tr>
+                                <th>Room Number</th>
+                                <th>Type</th>
+                                <th>Rate/Night</th>
+                                <th>Status</th>
+                                <th>Amenities</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>101</td>
+                                <td>Suite</td>
+                                <td>$250</td>
+                                <td><span class="status-badge status-available">Available</span></td>
+                                <td>WiFi, AC, Mini Bar</td>
+                                <td>
+                                    <button class="btn btn-warning" onclick="editRoom(this)">Edit</button>
+                                    <button class="btn btn-danger" onclick="deleteRoom(this)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>102</td>
+                                <td>Standard</td>
+                                <td>$150</td>
+                                <td><span class="status-badge status-occupied">Occupied</span></td>
+                                <td>WiFi, AC</td>
+                                <td>
+                                    <button class="btn btn-warning" onclick="editRoom(this)">Edit</button>
+                                    <button class="btn btn-danger" onclick="deleteRoom(this)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>201</td>
+                                <td>Deluxe</td>
+                                <td>$200</td>
+                                <td><span class="status-badge status-maintenance">Maintenance</span></td>
+                                <td>WiFi, AC, Balcony</td>
+                                <td>
+                                    <button class="btn btn-warning" onclick="editRoom(this)">Edit</button>
+                                    <button class="btn btn-danger" onclick="deleteRoom(this)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Booking Management Section -->
+            <div id="bookings" class="section hidden">
+                <div class="page-header">
+                    <h1>Booking Management</h1>
+                    <p>View and manage all hotel bookings.</p>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">All Bookings</h2>
+                        <button class="btn btn-primary" onclick="openModal('addBookingModal')">
+                             Manual Booking
+                        </button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Guest</th>
+                                <th>Email</th>
+                                <th>Room</th>
+                                <th>Check-in</th>
+                                <th>Check-out</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Check-In/Out Section -->
+            <div id="checkin" class="section hidden">
+                <div class="page-header">
+                    <h1>Check-In/Out System</h1>
+                    <p>Manage guest check-ins, check-outs, and room status.</p>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Today's Check-ins</h2>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Guest Name</th>
+                                <th>Room</th>
+                                <th>Expected Time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Today's Check-outs</h2>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Guest Name</th>
+                                <th>Room</th>
+                                <th>Expected Time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Staff Assignments Section -->
+            <div id="staff" class="section hidden">
+                <div class="page-header">
+                    <h1>Staff Assignments</h1>
+                    <p>Assign rooms to housekeeping and maintenance staff.</p>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Room Assignments</h2>
+                        <button class="btn btn-primary" onclick="openModal('assignStaffModal')">
+                            New Assignment
+                        </button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Room</th>
+                                <th>Task Type</th>
+                                <th>Assigned To</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Reports Section -->
+            <div id="reports" class="section hidden">
+                <div class="page-header">
+                    <h1>Reports & Analytics</h1>
+                    <p>View revenue reports and occupancy trends.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">$45,230</div>
+                        <div class="stat-label">Monthly Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">87%</div>
+                        <div class="stat-label">Average Occupancy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">4.8</div>
+                        <div class="stat-label">Guest Rating</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">342</div>
+                        <div class="stat-label">Total Guests</div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Revenue Trends</h2>
+                    </div>
+                    <p>Revenue analytics and charts would be displayed here in a real application.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Room Modal -->
+    <div id="addRoomModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Room</h2>
+                <button class="close-btn" onclick="closeModal('addRoomModal')">&times;</button>
+            </div>
+            <form id="addRoomForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="roomNumber">Room Number</label>
+                        <input type="text" id="roomNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomType">Room Type</label>
+                        <select id="roomType" required>
+                            <option value="">Select Type</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Deluxe">Deluxe</option>
+                            <option value="Suite">Suite</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomRate">Rate per Night ($)</label>
+                        <input type="number" id="roomRate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomStatus">Status</label>
+                        <select id="roomStatus" required>
+                            <option value="Available">Available</option>
+                            <option value="Occupied">Occupied</option>
+                            <option value="Maintenance">Maintenance</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="roomAmenities">Amenities</label>
+                    <textarea id="roomAmenities" rows="3" placeholder="WiFi, AC, Mini Bar, etc."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Room</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Booking Modal -->
+    <div id="addBookingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Manual Booking Entry</h2>
+                <button class="close-btn" onclick="closeModal('addBookingModal')">&times;</button>
+            </div>
+            <form id="addBookingForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="guestName">Guest Name</label>
+                        <input type="text" id="guestName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guestEmail">Email</label>
+                        <input type="email" id="guestEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookingRoom">Room</label>
+                        <select id="bookingRoom" required>
+                            <option value="">Select Room</option>
+                            <option value="101">Suite 101</option>
+                            <option value="102">Standard 102</option>
+                            <option value="201">Deluxe 201</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkInDate">Check-in Date</label>
+                        <input type="date" id="checkInDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkOutDate">Check-out Date</label>
+                        <input type="date" id="checkOutDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalAmount">Total Amount ($)</label>
+                        <input type="number" id="totalAmount" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Assign Staff Modal -->
+    <div id="assignStaffModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Assign Staff</h2>
+                <button class="close-btn" onclick="closeModal('assignStaffModal')">&times;</button>
+            </div>
+            <form id="assignStaffForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="assignRoom">Room</label>
+                        <select id="assignRoom" required>
+                            <option value="">Select Room</option>
+                            <option value="101">Room 101</option>
+                            <option value="102">Room 102</option>
+                            <option value="201">Room 201</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskType">Task Type</label>
+                        <select id="taskType" required>
+                            <option value="">Select Task</option>
+                            <option value="Housekeeping">Housekeeping</option>
+                            <option value="Maintenance">Maintenance</option>
+                            <option value="Deep Cleaning">Deep Cleaning</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="assignedStaff">Assign To</label>
+                        <select id="assignedStaff" required>
+                            <option value="">Select Staff</option>
+                            <option value="Sarah Johnson">Sarah Johnson</option>
+                            <option value="Mike Wilson">Mike Wilson</option>
+                            <option value="Emma Davis">Emma Davis</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select id="priority" required>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="taskNotes">Notes</label>
+                    <textarea id="taskNotes" rows="3" placeholder="Additional instructions..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Assign Task</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    </body>
+</html>  
