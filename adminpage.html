@@ -7,7 +7,6 @@
     <title>Hotel Admin Dashboard</title>
 </head>
 <body>
-    <!-- Login Form -->
     <div id="loginContainer" class="login-container">
         <form class="login-form" id="loginForm">
             <div class="login-header">
@@ -26,10 +25,7 @@
         </form>
     </div>
 
-    <!-- Admin Dashboard -->
-    <div id="adminContainer" class="admin-container">
-    
-    <!-- Sidebar -->
+    <div id="adminContainer" class="admin-container" style="display: none;">
     <aside class="sidebar">
         <div class="sidebar-header">
             <h2>Hotel Admin</h2>
@@ -64,9 +60,7 @@
         </nav>
     </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <!-- Dashboard Section -->
             <div id="dashboard" class="section">
                 <div class="page-header">
                     <h1>Dashboard Overview</h1>
@@ -111,7 +105,6 @@
                 </div>
             </div>
 
-            <!-- Room Management Section -->
             <div id="rooms" class="section hidden">
                 <div class="page-header">
                     <h1>Room Management</h1>
@@ -175,7 +168,6 @@
                 </div>
             </div>
 
-            <!-- Booking Management Section -->
             <div id="bookings" class="section hidden">
                 <div class="page-header">
                     <h1>Booking Management</h1>
@@ -207,7 +199,6 @@
                 </div>
             </div>
 
-            <!-- Check-In/Out Section -->
             <div id="checkin" class="section hidden">
                 <div class="page-header">
                     <h1>Check-In/Out System</h1>
@@ -249,7 +240,6 @@
                 </div>
             </div>
 
-            <!-- Staff Assignments Section -->
             <div id="staff" class="section hidden">
                 <div class="page-header">
                     <h1>Staff Assignments</h1>
@@ -278,7 +268,6 @@
                 </div>
             </div>
 
-            <!-- Reports Section -->
             <div id="reports" class="section hidden">
                 <div class="page-header">
                     <h1>Reports & Analytics</h1>
@@ -314,7 +303,6 @@
         </main>
     </div>
 
-    <!-- Add Room Modal -->
     <div id="addRoomModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -358,7 +346,6 @@
         </div>
     </div>
 
-    <!-- Add Booking Modal -->
     <div id="addBookingModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -379,9 +366,6 @@
                         <label for="bookingRoom">Room</label>
                         <select id="bookingRoom" required>
                             <option value="">Select Room</option>
-                            <option value="101">Suite 101</option>
-                            <option value="102">Standard 102</option>
-                            <option value="201">Deluxe 201</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -402,7 +386,6 @@
         </div>
     </div>
 
-    <!-- Assign Staff Modal -->
     <div id="assignStaffModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -415,9 +398,6 @@
                         <label for="assignRoom">Room</label>
                         <select id="assignRoom" required>
                             <option value="">Select Room</option>
-                            <option value="101">Room 101</option>
-                            <option value="102">Room 102</option>
-                            <option value="201">Room 201</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -433,9 +413,6 @@
                         <label for="assignedStaff">Assign To</label>
                         <select id="assignedStaff" required>
                             <option value="">Select Staff</option>
-                            <option value="Sarah Johnson">Sarah Johnson</option>
-                            <option value="Mike Wilson">Mike Wilson</option>
-                            <option value="Emma Davis">Emma Davis</option>
                         </select>
                     </div>
                     <div class="form-group">

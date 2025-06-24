@@ -30,14 +30,6 @@
             }
         });
 
-        // Alternative login function for testing
-        function testLogin() {
-            console.log('Test login called');
-            document.getElementById('loginContainer').style.display = 'none';
-            document.getElementById('adminContainer').style.display = 'block';
-            showSection('dashboard');
-        }
-
         // Make sure DOM is loaded before adding event listeners
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded');
