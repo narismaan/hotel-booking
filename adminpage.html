@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>Hotel Admin Dashboard</title>
 </head>
 <body>
@@ -26,41 +28,49 @@
     </div>
 
     <div id="adminContainer" class="admin-container" style="display: none;">
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <h2>Hotel Admin</h2>
-        </div>
-
-        <nav class="sidebar-nav">
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#" class="nav-link active" onclick="showSection('dashboard', this)">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('rooms', this)">Room Management</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('bookings', this)">Booking Management</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('checkin', this)">Check-In/Out</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('staff', this)">Staff Assignments</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="showSection('reports', this)">Reports</a>
-                </li>
-                <li class="nav-item logout-link" style="margin-top: auto;">
-                    <a href="#" class="nav-link" onclick="logout()">
-                        Logout
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </aside>
-
+        <aside class="sidebar" id="sideNav">
+            <button onclick="showSideNav()" id="closeNavbar">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <div class="sidebar-nav row collapse navbar-collapse" id="navbarContent">
+                        <div class="sidebar-header">
+                            <h2>Hotel Admin</h2>
+                        </div>
+                        <ul class="nav-menu">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link active" onclick="showSection('dashboard', this)">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" onclick="showSection('rooms', this)">Room Management</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" onclick="showSection('bookings', this)">Booking Management</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" onclick="showSection('checkin', this)">Check-In/Out</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" onclick="showSection('staff', this)">Staff Assignments</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" onclick="showSection('reports', this)">Reports</a>
+                            </li>
+                            <li class="nav-item logout-link" style="margin-top: auto;">
+                                <a href="#" class="nav-link" onclick="logout()">
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </aside>
         <main class="main-content">
+            <button onclick="showSideNav()" id="openNavbar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button> 
             <div id="dashboard" class="section">
                 <div class="page-header">
                     <h1>Dashboard Overview</h1>
@@ -433,5 +443,6 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>  
