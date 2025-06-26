@@ -28,6 +28,15 @@
     </div>
 
     <div id="adminContainer" class="admin-container" style="display: none;">
+        <header class="admin-header">
+            <button onclick="showSideNav()" id="openNavbar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button> 
+            <button class="logout-btn" onclick="logout()">
+                <i class="bi bi-box-arrow-right"></i> 
+                    <span class="logout-text">Logout</span>
+            </button>
+        </header>
         <aside class="sidebar" id="sideNav">
             <button onclick="showSideNav()" id="closeNavbar">
                 <i class="bi bi-x-lg"></i>
@@ -35,7 +44,7 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <div class="sidebar-nav row collapse navbar-collapse" id="navbarContent">
-                        <div class="sidebar-header">
+                        <div class="sidebar-header" style="align-items: center;">
                             <h2>Hotel Admin</h2>
                         </div>
                         <ul class="nav-menu">
@@ -57,20 +66,12 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link" onclick="showSection('reports', this)">Reports</a>
                             </li>
-                            <li class="nav-item logout-link" style="margin-top: auto;">
-                                <a href="#" class="nav-link" onclick="logout()">
-                                    Logout
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </aside>
         <main class="main-content">
-            <button onclick="showSideNav()" id="openNavbar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-list"></i>
-            </button> 
             <div id="dashboard" class="section">
                 <div class="page-header">
                     <h1>Dashboard Overview</h1>
